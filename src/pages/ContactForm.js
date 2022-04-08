@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { ThemeContext } from '../components/themeContext';
 import { useForm } from '../hooks/useForm';
 import './ContactForm.scss';
 
 export const ContactForm = () => {
+  const {toggle, toggleFunction} = React.useContext(ThemeContext);
   const [formValues, handleInputChange] = useForm({
     name: '',
     email: '',
@@ -22,10 +24,10 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className='contact-container'>
+    <div className='contact-container vh-100' style= {toggle ? {background: 'rgb(30, 30, 30)'} : {}} >
       <form className='contact-form' onSubmit={handleSubmit}>
-        <h2>Contact Form</h2>
-        <hr />
+        <h2 style = {toggle ? {color : 'white'} : {}}>Contact Form</h2>
+        <hr style = {toggle ? {color : 'white'} : {}}/>
 
         <div className='form-group'>
           <input
